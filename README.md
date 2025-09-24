@@ -8,6 +8,12 @@ link to honors project proposal: https://docs.google.com/document/d/1RAKNaNQSU8z
 
 I hope this readme file works that way I want it to.
 
+## Goals given by PK:
+
+- [x] create a program that takes the input of a file, and creates a map of all the characters
+    - this step was easier that I thought it would be, it just uses the txt file, then adds them to the map
+
+
 If I dont want to click the link above, here is the content of the doc:
 
 ## Huffman File Compression/Decompression
