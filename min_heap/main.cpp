@@ -12,8 +12,9 @@ int main(){
 	}
 
 	while(h.getSize() > 0){
+		std::cout << "current heap: \t";
 		h.printHeap();
-		std::cout << h.extractMin() << std::endl;
+		std::cout << "extracting: \t" << h.extractMin() << std::endl;
 	}
 
 	return 0;
