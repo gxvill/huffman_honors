@@ -6,9 +6,6 @@
 using namespace std;
 
 map<char,int> mapTxt(ifstream*);
-
-
-
 map<char, int> mapTxt(ifstream* file){
     std::map<char, int> dict;
     char ch;

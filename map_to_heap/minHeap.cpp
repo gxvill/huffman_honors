@@ -3,18 +3,6 @@
 #include <stdexcept> 
 #include "minHeap.hpp"
 
-struct Node{
-	int freq;
-	char c;
-	Node* left;
-	Node* right;
-	Node() : freq(0), c('\0'), left(nullptr), right(nullptr) {}
-	Node(int f) : freq(0), c('\0'), left(nullptr), right(nullptr) {}
-	Node(int f, char a) : freq(0), c(a), left(nullptr), right(nullptr) {}
-	Node(int f, char a, Node* r) : freq(0), c(a), left(nullptr), right(r) {}
-	Node(int f, char a, Node* r, Node* l) : freq(0), c(a), left(l), right(r) {}
-};
-
 
 minHeap::minHeap(){
 	size = 0;
@@ -25,9 +13,17 @@ minHeap::minHeap(int i){
 	size = 0;
 	capacity = i;
 	array.resize(i);
-
 }
 minHeap::~minHeap(){
+	clear();
+}
+void minHeap::clear(){
+	for(auto n : array){
+		delete n;
+	}
+	size = 0;
+	capacity = 0;
+	array.resize(size);
 }
 int minHeap::getSize(){
 	return size;
@@ -41,7 +37,7 @@ void minHeap::heapify(int i){
 	if(left < size && array[left]->freq < array[smallest]->freq)
 		smallest = left;
 
-	if(right < size && array[right] < array[smallest])
+	if(right < size && array[right]->freq < array[smallest]->freq)
 		smallest = right;
 
 	if(smallest != i){
@@ -107,18 +103,20 @@ void minHeap::remove(Node* key){
 	}
 }
 
-Node* minHeap::extractMin(){
+minHeap::Node* minHeap::extractMin(){
 
 	if(size == 0){					// if empty return -1
 		return nullptr;
 	}
 	if(size == 1){					// if ther is only 1 element return i 0
 		size--;
-		Node* root = array[0];
+		Node* root = new Node;
+		root = array[0];
 		return root;
 	}
 
-	Node* root = array[0];				// store the current root
+	Node* root = new Node;
+	root = array[0];				// store the current root
 	array[0] = array[size - 1];		// last elem goes to front
 	size--;							// decrement size (delete last elem)
 
@@ -126,7 +124,7 @@ Node* minHeap::extractMin(){
 	return root;
 }
 
-Node* minHeap::peek(){
+minHeap::Node* minHeap::peek(){
 
 	return nullptr;
 }
