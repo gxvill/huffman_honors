@@ -13,8 +13,9 @@ int main(){
     map<char,int> res = mapTxt(inputFilePtr);
 
 	for(auto m : res){
-		cout << "The char is: " <<  m.first << " The frequency is: " << m.second << endl;
+		cout  <<  m.first << ":" << m.second << "\t";
 	}
+	cout << endl;
 
     return 0;
 }
